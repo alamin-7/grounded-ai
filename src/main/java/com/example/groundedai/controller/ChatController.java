@@ -24,5 +24,11 @@ public class ChatController {
         return service.reply(req.message())
                 .map(ChatResponse::new);
     }
+    @PostMapping("ollama")
+    public Mono<ChatResponse> chatWithOllama(@RequestBody ChatRequest request) {
+
+        return service.replyWithOllama(request.message())
+                .map(ChatResponse::new);
+    }
 
 }

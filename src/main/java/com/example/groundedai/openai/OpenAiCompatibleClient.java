@@ -40,11 +40,11 @@ public class OpenAiCompatibleClient {
 
         return webClient.post()
                 .uri("/v1/chat/completions")
-                .header(HttpHeaders.AUTHORIZATION, "Bearer " + aiProperties.apiKey())
+                //.header(HttpHeaders.AUTHORIZATION, "Bearer " + aiProperties.apiKey())
                 .bodyValue(body)
                 .retrieve()
                 .bodyToMono(Map.class)
-                .timeout(Duration.ofSeconds(aiProperties.timeoutSeconds()))
+             //   .timeout(Duration.ofSeconds(aiProperties.timeoutSeconds()))
                 .map(resp -> {
                     // Extract: choices[0].message.content
                     var choices = (List<Map<String, Object>>) resp.get("choices");
